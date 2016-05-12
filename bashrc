@@ -8,33 +8,32 @@ source ~/.bash_aliases
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
-eval "$(rbenv init -)"
+case $- in *i*) eval "$(rbenv init -)"; esac
 
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
 export CLICOLOR=true
 export EDITOR=/usr/bin/vim
 
-export MYSQL_USERNAME=fuji
-export MYSQL_PASSWORD=yama
+export MYSQL_USERNAME=root
+export MYSQL_PASSWORD=admin
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 
 
-BLUE="\[\e[1;34m\]"
-BLUE_="\[\e[0;34m\]"
-BROWN="\[\e[0;31m\]"
+BLUE_STRONG="\[\e[1;34m\]"
+BLUE="\[\e[0;34m\]"
+RED="\[\e[0;31m\]"
 YELLOW="\[\e[1;33m\]"
 RESET="\[\e[0;0m\]"
 
-SEPARATOR="☮"
-SYM="$BLUE$SEPARATOR"
+SEPARATOR="🍀"
+SYM="$SEPARATOR"
 
-export PS1="$SYM$BROWN #\# $SYM$BROWN \t $SYM$BROWN \u@\h $SYM$BROWN \w $SYM$YELLOW\$(__git_ps1 \" (%s)\")\n$BLUE\$$RESET "
-
-
+export PS1="$SYM$RED #\# $SYM$RED \t $SYM$RED \u@\h $SYM$RED \w $SYM$YELLOW\$(__git_ps1 \" (%s)\")\n$BLUE_STRONG\$$RESET "
 
 
-echo && fortune | ponysay && echo
+
+case $- in *i*) (echo && fortune | ponysay && echo); esac
 
