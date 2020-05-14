@@ -2,6 +2,8 @@
 *~
 *.swp
 asdf.*
+asdf?.*
+.DS_Store
 
 bin/
 */bin
