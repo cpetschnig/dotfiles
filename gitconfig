@@ -1,0 +1,32 @@
+[include]
+	path = ~/.dotfiles/gitconfig.local
+[user]
+	name = Christoph Petschnig
+	email = christoph.petschnig@sage.com
+[core]
+	excludesfile = /Users/cpetschnig/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	cache-diff = diff --cached
+	chpick = cherry-pick
+	unstage = reset HEAD
+	tree = !/Users/cpetschnig/.switch-ruby/bin/ruby /Users/cpetschnig/Code/git-status-tree/bin/git-status-tree
+	fpush = push --force-with-lease
+	srsp = !git stash && git rebase && git stash pop
+[diff]
+	algorithm = patience
+	noprefix = true
+[url "https://"]
+	insteadOf = git://
+[url "git@github.com:"]
+	insteadOf = gh:
+[push]
+	default = current
+[commit]
+	gpgsign = false
