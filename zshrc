@@ -8,7 +8,7 @@ export ZSH="/Users/cpetschnig/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="amuse"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -102,4 +102,34 @@ export PATH="$HOME/.bin:$PATH"
 
 # recommended by brew doctor
 export PATH="/usr/local/bin:$PATH"
+
+# Docker
+eval $(docker-machine env default)
+
+function docker_start() {
+  docker-machine start default
+  eval "$(docker-machine env default)"
+  docker-machine ssh default "echo 'sysctl -w vm.max_map_count=262144' | sudo tee -a /var/lib/boot2docker/profile > /dev/null"
+  echo; echo "✅ Docker machine 'default' started."
+}
+
+function docker_stop() {
+  docker-machine stop default
+  echo; echo "✅ Docker machine 'default' stopped."
+}
+
+function docker_restart() {
+  docker_stop
+  docker_start
+}
+
+function aws-ecr-login {
+  `aws ecr get-login --no-include-email`
+}
+
+
+ZSH_LOCAL=~/.dotfiles/zshrc.local
+if test -f $ZSH_LOCAL; then
+    source $ZSH_LOCAL
+fi
 
