@@ -101,6 +101,8 @@ source $ZSH/oh-my-zsh.sh
 # use Christophs custom commands
 export PATH="$HOME/.bin:$PATH"
 
+source $HOME/.bash_aliases
+
 # recommended by brew doctor
 export PATH="/usr/local/bin:$PATH"
 
