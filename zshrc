@@ -98,10 +98,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# use Christophs custom commands
 export PATH="$HOME/.bin:$PATH"
 
 # recommended by brew doctor
 export PATH="/usr/local/bin:$PATH"
+
+# rbenv
+export PATH="$HOME/.rbenv/shims:$PATH"
 
 # Docker
 eval $(docker-machine env default)
@@ -124,9 +128,11 @@ function docker_restart() {
 }
 
 function aws-ecr-login {
-  `aws ecr get-login --no-include-email`
+  `aws ecr get-login-password | docker login --username AWS --password-stdin 522104923602.dkr.ecr.eu-west-1.amazonaws.com`
 }
 
+# recommended by ruby-build
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 ZSH_LOCAL=~/.dotfiles/zshrc.local
 if test -f $ZSH_LOCAL; then
