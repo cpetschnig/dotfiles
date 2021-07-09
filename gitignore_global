@@ -4,6 +4,7 @@
 asdf.*
 asdf?.*
 .DS_Store
+.vscode/
 
 bin/
 */bin

@@ -129,10 +129,6 @@ function docker_restart() {
   docker_start
 }
 
-function aws-ecr-login {
-  `aws ecr get-login-password | docker login --username AWS --password-stdin 522104923602.dkr.ecr.eu-west-1.amazonaws.com`
-}
-
 # recommended by ruby-build
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
@@ -140,4 +136,8 @@ ZSH_LOCAL=~/.dotfiles/zshrc.local
 if test -f $ZSH_LOCAL; then
     source $ZSH_LOCAL
 fi
+
+unsetopt inc_append_history
+unsetopt share_history
+
 

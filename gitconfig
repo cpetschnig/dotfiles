@@ -30,3 +30,7 @@
 	default = current
 [commit]
 	gpgsign = false
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
