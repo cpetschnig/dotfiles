@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # use Christophs custom commands
 export PATH="$HOME/.bin:$PATH"
 
+export LANG=en_US.UTF-8
+
 source $HOME/.bash_aliases
 
 # recommended by brew doctor
@@ -117,9 +119,6 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 # brew needs to get added for some reason 🤔
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# recommended by ruby-build
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
 ZSH_LOCAL=~/.dotfiles/zshrc.local
 if test -f $ZSH_LOCAL; then
     source $ZSH_LOCAL
@@ -127,3 +126,6 @@ fi
 
 unsetopt inc_append_history
 unsetopt share_history
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
